@@ -23,22 +23,28 @@ Chart.register(...registerables);
 export default {
     name:'ChartComponent',
     components:{ LineChart },
-    props:['data', 'today'],
+    props:['data','today','yesterday'],
     setup(props){
         const values = ref(props.data.data.included[0].attributes.values)
         let prices = []
         let hours = []
+        
+        const today = ref(props.today);
+        const yesterday = ref(props.yesterday);
 
+        console.log(today.value);
+        console.log(yesterday.value);
         values.value.map((el)=>{
-            
             let formatDate = new Date(Date.parse(el.datetime))
+            if(yesterday.value < formatDate && formatDate > today.value){
             
             prices = [...prices, el.value]
             hours = [...hours, `${formatDate.getDate()}/${formatDate.getMonth()+1} ${formatDate.getHours()}:00`]
+
+            }
         })
 
         let media=[]
-        
         for (let i = 0; i < prices.length; i++) {
             media = [...media, (prices.reduce((a,b)=>a+b)/prices.length).toFixed(2)]            
         }

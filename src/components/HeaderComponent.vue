@@ -1,14 +1,12 @@
 <template>
-    <v-app-bar>
+    <v-app-bar app>
             <v-avatar>
                 <v-img 
                 width="100%"
-                lazy-src="https://res.cloudinary.com/dffkajufp/image/upload/v1649377758/photo1649377718_yr3h2m.jpg" 
                 src="https://res.cloudinary.com/dffkajufp/image/upload/v1649377758/photo1649377718_yr3h2m.jpg" 
                 alt="profile-pic">
                 </v-img>
             </v-avatar>
-        
     </v-app-bar>
 </template>
 

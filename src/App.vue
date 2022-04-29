@@ -2,7 +2,7 @@
   <v-app>
       <HeaderComponent id="header"/>
       <NavigationComponent id="nav"/>
-      <ChartComponent :data="data" />
+<ChartComponent :data="data" :today="today" :yesterday="yesterday" />
       <MinMaxComponent :data="data" :today="today"/>
   </v-app>
 </template>

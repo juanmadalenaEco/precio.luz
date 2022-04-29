@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer permanent rail>
+  <v-navigation-drawer permanent rail app>
       <v-list nav>
           <v-list-item class="" prepend-icon="mdi-chart-box-outline" title="" value="chart">
           </v-list-item>

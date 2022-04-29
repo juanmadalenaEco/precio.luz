@@ -1,6 +1,6 @@
 <template>
 <v-main>
-        <v-card 
+ <v-card 
         elevation="0"
         width="90%">
 <v-row>
@@ -87,8 +87,6 @@ setup(props){
 
     const todayMax = todayPrices.indexOf(Math.max.apply(null,todayPrices))
     const todayMin = todayPrices.indexOf(Math.min.apply(null,todayPrices))
-
-    console.log(todayPrices);
 
     return{
         prices,todayMax,todayMin,yesterdayMax,yesterdayMin
