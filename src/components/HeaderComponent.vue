@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar app>
+    <v-app-bar app clipped-left>
             <v-avatar>
                 <v-img 
                 width="100%"
