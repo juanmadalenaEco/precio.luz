@@ -6,7 +6,7 @@
         <h5>
             Media:
         </h5>
-        <h4>{{media}}</h4>
+        <h4>{{media[0]}}</h4>
     </div>
     </v-card>
 </v-main>
@@ -23,34 +23,46 @@ Chart.register(...registerables);
 export default {
     name:'ChartComponent',
     components:{ LineChart },
-    props:['data'],
+    props:['data', 'today'],
     setup(props){
         const values = ref(props.data.data.included[0].attributes.values)
-        console.log(values.value);
-
         let prices = []
         let hours = []
 
         values.value.map((el)=>{
-
+            
             let formatDate = new Date(Date.parse(el.datetime))
             
             prices = [...prices, el.value]
             hours = [...hours, `${formatDate.getDate()}/${formatDate.getMonth()+1} ${formatDate.getHours()}:00`]
         })
 
-        const media = (prices.reduce((a,b)=>a+b) / prices.length+1).toFixed(2)
+        let media=[]
+        
+        for (let i = 0; i < prices.length; i++) {
+            media = [...media, (prices.reduce((a,b)=>a+b)/prices.length).toFixed(2)]            
+        }
+
         const chartData = {
         labels: hours,
         datasets: [
             {
             data: prices,
-            backgroundColor: ['red'],
+            backgroundColor: 'blue',
             label:'price',
+            borderColor:'blue',
             },
+            {
+            data: media,
+            backgroundColor:'red',
+            label:'media',
+            borderColor:'red',
+            pointStyle:'circle',
+            pointRadius:0,
+            pointHoverRadius:0,
+            }
         ],
         }; 
-        console.log(media);
         return{
             chartData,media
         }

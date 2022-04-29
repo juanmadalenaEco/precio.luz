@@ -1,6 +1,5 @@
 <template>
 <v-main>
-    <v-content>
         <v-card 
         elevation="0"
         width="90%">
@@ -57,14 +56,13 @@
             </v-col>
         </v-row>
         </v-card>
-        </v-content>
 </v-main>
 </template>
 
 <script>
 import { ref } from 'vue'
 export default {
-name:'PricesComponent',
+name:'MinMaxComponent',
 props:['data','today'],
 setup(props){
     const prices = ref(props.data.data.included[0].attributes.values)
