@@ -14,6 +14,11 @@
                             {{prices[yesterdayMin].value}}
                         </h3>
                     </v-card-title>
+                    <v-card-text>
+                        <h3>
+                            {{yesterdayMin}}:00
+                        </h3>
+                    </v-card-text>
                 </v-card>
             </v-col>
             <v-col>
@@ -25,7 +30,12 @@
                         <h3 class="red">
                         {{prices[todayMin + 24].value}}
                         </h3>
-                    </v-card-title>                
+                    </v-card-title>
+                    <v-card-text>
+                        <h3>
+                            {{todayMin}}:00
+                        </h3>
+                    </v-card-text>                
                 </v-card>
             </v-col>
         </v-row>
@@ -37,9 +47,14 @@
                     </v-card-header>
                     <v-card-title>
                         <h3 class="green">
-                        {{prices[todayMin + 24].value}}
+                        {{prices[todayMax].value}}
                         </h3>
-                    </v-card-title>                
+                    </v-card-title>
+                    <v-card-text>
+                        <h3>
+                            {{yesterdayMax}}:00
+                        </h3>
+                    </v-card-text>               
                 </v-card>
             </v-col>
             <v-col>
@@ -51,7 +66,12 @@
                         <h3 class="green">
                         {{prices[todayMax + 24].value}}
                         </h3>
-                    </v-card-title>                
+                    </v-card-title>       
+                    <v-card-text>
+                        <h3>
+                            {{todayMax}}:00
+                        </h3>
+                    </v-card-text>         
                 </v-card>
             </v-col>
         </v-row>
@@ -81,7 +101,8 @@ setup(props){
             yesterdayPrices = [...yesterdayPrices, el.value]
         }
 })
-
+    console.log(todayPrices);
+    console.log(yesterdayPrices);
     const yesterdayMax = yesterdayPrices.indexOf(Math.max.apply(null,yesterdayPrices))
     const yesterdayMin = yesterdayPrices.indexOf(Math.min.apply(null,yesterdayPrices))
 

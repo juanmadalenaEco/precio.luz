@@ -32,18 +32,14 @@ export default {
         const today = ref(props.today);
         const yesterday = ref(props.yesterday);
 
-        console.log(today.value);
-        console.log(yesterday.value);
         values.value.map((el)=>{
             let formatDate = new Date(Date.parse(el.datetime))
-            if(yesterday.value < formatDate && formatDate > today.value){
-            
+            if( today.value.getHours() === formatDate.getHours() || today.value > formatDate && yesterday.value < formatDate){
+                console.log(formatDate);
             prices = [...prices, el.value]
             hours = [...hours, `${formatDate.getDate()}/${formatDate.getMonth()+1} ${formatDate.getHours()}:00`]
-
             }
         })
-
         let media=[]
         for (let i = 0; i < prices.length; i++) {
             media = [...media, (prices.reduce((a,b)=>a+b)/prices.length).toFixed(2)]            
